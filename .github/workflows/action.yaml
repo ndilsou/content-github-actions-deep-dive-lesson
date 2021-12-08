@@ -12,7 +12,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
       - name: Set up python
-      - uses: actions/setup-python@v2
+        uses: actions/setup-python@v2
         with:
           python-version: 3.8
       - name: Install libraries
@@ -23,7 +23,8 @@ jobs:
       - name: Create zip bundle
         run: |
           zip -r ../${{ github.sha }}.zip .
-      - uses: actions/upload-artifact@v2
+      - name: Archive artifact
+        uses: actions/upload-artifact@v2
         with:
           name: zipped-bundle
           path: ${{ github.sha }}.zip
